@@ -1,4 +1,5 @@
 # Подключаем pygame
+# ПРИВЕТ, ЕВГЕНИЯ АЛЕКСЕЕВНА!
 import pygame
 from setup import *
 from maps import *
