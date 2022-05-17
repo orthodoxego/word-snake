@@ -253,11 +253,15 @@ while (playGame):
         pygame.display.flip()
 
         # Расчёты:
-        if game_map[snake[0][1]][snake[0][0]] == 5:
+        SQUARE = game_map[snake[0][1]][snake[0][0]];
+        if SQUARE == SQUARE_APPEND_SNAKE:
             snake.append([snake[0][0], snake[0][1]])
+
         if check_candy(snake, game_map):
             count_candy += 1
-            snake.append([snake[0][0], snake[0][1]])    
+            snake.append([snake[0][0], snake[0][1]])
+
+        # Если количество конфет на уровне == собранным конфетам
         if level_candy == count_candy:
             if check_portal(snake, game_map):
                 level += 1
