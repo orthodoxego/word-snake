@@ -196,18 +196,19 @@ while (playGame):
         # Выводим изображение карты
         for i in range(len(game_map)):
             for j in range(len(game_map[i])):
-                if game_map[i][j] == 1:
+                SQUARE = game_map[i][j]
+                if SQUARE == BRICK:
                     scene.blit(brick, (j * 32, i * 32))
-                elif game_map[i][j] == 2:
+                elif SQUARE == 2:
                     scene.blit(candy, (j * 32, i * 32))
-                elif game_map[i][j] == 4:
+                elif SQUARE == PORTAL:
                     if level_candy == count_candy and word_complete == True:
                         scene.blit(portal, (j * 32, i * 32))
-                elif game_map[i][j] == 5:
+                elif SQUARE == SQUARE_APPEND_SNAKE:
                     scene.blit(i_dont_no, (j * 32, i * 32))        
-                elif game_map[i][j] == 6:
+                elif SQUARE == SQUARE_REMOVE_SNAKE:
                     scene.blit(i_dont_no_brr, (j * 32, i * 32))
-                elif game_map[i][j] == 7:
+                elif SQUARE == 7:
                     scene.blit(agi, (j * 32, i * 32))
 
 
@@ -253,7 +254,7 @@ while (playGame):
         pygame.display.flip()
 
         # Расчёты:
-        SQUARE = game_map[snake[0][1]][snake[0][0]];
+        SQUARE = game_map[snake[0][1]][snake[0][0]]
         if SQUARE == SQUARE_APPEND_SNAKE:
             snake.append([snake[0][0], snake[0][1]])
 
