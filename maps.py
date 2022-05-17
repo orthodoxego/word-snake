@@ -17,8 +17,8 @@ PORTAL = 4
 SQUARE_APPEND_SNAKE = 5
 # 6 - синий квадрат убирает часть змеи
 SQUARE_REMOVE_SNAKE = 6
-# 7 - полусломанный кирпич
-# 8 - пушка
+# 7 - кот
+SQUARE_CAT = 7
 # 9 - труба
 # a - медоед
 # b - труба и медоед
@@ -141,7 +141,7 @@ def Word03():
     a.append(["A", 3, 9, False])
     a.append(["M", 15, 3, False])
     a.append(["S", 18, 8, False])
-    a.append(["T", 21, 19, False])
+    a.append(["T", 21, 17, False])
     a.append(["E", 29, 18, False])
     a.append(["R", 4, 15, False])
     return a
