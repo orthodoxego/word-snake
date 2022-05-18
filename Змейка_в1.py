@@ -172,6 +172,19 @@ while (playGame):
             snake = [[1, 17],
                      [1, 18]]
 
+        if level == 5:
+            game_map = Level05()
+            word = Word05()
+            level_candy = getCountCandys(game_map)
+            snake = [[8, 15],
+                     [8, 16]]
+        if level == 6:
+            game_map = Level06()
+            word = Word06()
+            level_candy = getCountCandys(game_map)
+            snake = [[5, 8],
+                     [5, 7]]
+
         print(f"Количество кэнди на уровне {level} = {level_candy}")
         GAME_STATE = PLAY 
 

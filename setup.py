@@ -23,7 +23,7 @@ PLAY = 2
 GAME_OVER = 3
 
 GAME_STATE = RESTART
-level = 4
+level = 6
 
 UP = 1
 DOWN = 2

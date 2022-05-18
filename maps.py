@@ -65,12 +65,10 @@ def Level01():
 def Word01():
     a = []
 
-    a.append(["HOUSE", "ДОМ"])
-    a.append(["H", 33, 3, False])
-    a.append(["O", 21, 7, False])
-    a.append(["U", 13, 18, False])
-    a.append(["S", 14, 14, False])
-    a.append(["E", 25, 18, False])
+    a.append(["CAT", "КОТ"])
+    a.append(["C", 33, 3, False])
+    a.append(["A", 21, 7, False])
+    a.append(["T", 13, 18, False])
     return a
     
 def Level02():
@@ -101,11 +99,10 @@ def Level02():
 def Word02():
     a = []
 
-    a.append(["MILK", "МОЛОКО"])
-    a.append(["M", 6, 16, False])
-    a.append(["I", 28, 2, False])
-    a.append(["L", 10, 7, False])
-    a.append(["K", 14, 14, False])
+    a.append(["DOG", "СОБАКА"])
+    a.append(["D", 6, 16, False])
+    a.append(["O", 28, 2, False])
+    a.append(["G", 10, 7, False])
     return a
 
 def Level03():
@@ -136,14 +133,13 @@ def Level03():
 def Word03():
     a = []
 
-    a.append(["HAMSTER", "ХОМЯК"])
-    a.append(["H", 30, 5, False])
+    a.append(["RABBIT", "КРОЛИК"])
+    a.append(["К", 30, 5, False])
     a.append(["A", 3, 9, False])
-    a.append(["M", 15, 3, False])
-    a.append(["S", 18, 8, False])
-    a.append(["T", 21, 17, False])
-    a.append(["E", 29, 18, False])
-    a.append(["R", 4, 15, False])
+    a.append(["B", 15, 3, False])
+    a.append(["B", 18, 8, False])
+    a.append(["I", 21, 17, False])
+    a.append(["T", 29, 18, False])
     return a
 
 def Level04():
@@ -158,7 +154,7 @@ def Level04():
     a.append([1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 1, 0, 1])
     a.append([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 1])
     a.append([1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 1])
-    a.append([1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 3, 3, 3, e, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 1])
+    a.append([1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 1])
     a.append([1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 1])
     a.append([1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 1])
     a.append([1, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 1])
@@ -174,11 +170,11 @@ def Level04():
 def Word04():
     a = []
 
-    a.append(["WHAT", "ЧТО"])
-    a.append(["W", 3, 4, False])
-    a.append(["H", 26, 17, False])
-    a.append(["A", 17, 15, False])
-    a.append(["T", 27, 5, False])
+    a.append(["DUCK", "УТКА"])
+    a.append(["D", 3, 4, False])
+    a.append(["U", 26, 17, False])
+    a.append(["C", 17, 15, False])
+    a.append(["K", 27, 5, False])
 
     return a
 
@@ -198,8 +194,8 @@ def Level05():
     a.append([1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
     a.append([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
     a.append([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, d, 0, 0, 0, 0, d, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
-    a.append([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
-    a.append([1, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
+    a.append([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
+    a.append([1, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
     a.append([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1])
     a.append([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1])
     a.append([1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1])
@@ -209,13 +205,14 @@ def Level05():
 def Word05():
     a = []
 
-    a.append(["ANIMAL", "ЖИВОТНЫЕ"])
-    a.append(["A", 7, 13, False])
-    a.append(["N", 25, 6, False])
-    a.append(["I", 26, 7, False])
-    a.append(["M", 14, 15, False])
-    a.append(["A", 25, 18, False])
-    a.append(["L", 16, 13, False])
+    a.append(["GIRAFFE", "ЖИРАФ"])
+    a.append(["G", 7, 13, False])
+    a.append(["I", 25, 6, False])
+    a.append(["R", 26, 16, False])
+    a.append(["A", 7, 4, False])
+    a.append(["F", 15, 8, False])
+    a.append(["F", 17, 17, False])
+    a.append(["E", 15, 14, False])
     return a
 
 def Level06():
@@ -246,12 +243,14 @@ def Level06():
 def Word06():
     a = []
 
-    a.append(["MAGIC", "МАГИЯ"])
-    a.append(["M", 16, 4, False])
-    a.append(["A", 3, 14, False])
-    a.append(["G", 10, 7, False])
-    a.append(["I", 31, 2, False])
-    a.append(["C", 14, 14, False])
+    a.append(["GOODBYE", "ДО СВИДАНИЯ"])
+    a.append(["G", 16, 4, False])
+    a.append(["O", 3, 14, False])
+    a.append(["O", 10, 7, False])
+    a.append(["D", 31, 2, False])
+    a.append(["B", 14, 14, False])
+    a.append(["Y", 27, 2, False])
+    a.append(["E", 34, 18, False])
     return a
 
 
