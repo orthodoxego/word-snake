@@ -253,15 +253,14 @@ while (playGame):
                     scene.blit(agi, (j * 32, i * 32))
                 elif SQUARE == 8:
                     scene.blit(bush_c, (j * 32, i * 32))
-                elif SQUARE == 10:
+                elif SQUARE == a:
                     if (bager_move == RIGHT):
                         scene.blit(honey_badger4, (j * 32, i * 32))
                     if (bager_move == UP):
                         scene.blit(honey_badger1, (j * 32, i * 32))
                     if (bager_move == DOWN):
                         scene.blit(honey_badger3, (j * 32, i * 32))
-                    if (count_frame % (speed_snake * 3) == 0):
-                        game_map = bagerMove(i, j, game_map)
+
 
         # Выводим голову
         if move == STOP:
@@ -330,6 +329,15 @@ while (playGame):
                 num_letter += 1                             # Увеличивает номер буквы (надо собирать следующую)
                 if num_letter == len(word):
                     word_complete = True
+
+        # Двигаем медоедов при их наличии
+        if (count_frame % (speed_snake * 5) == 0):
+            for i in range(len(game_map)):
+                for j in range(len(game_map[i])):
+                    SQUARE = game_map[i][j]
+                    if SQUARE == a:
+                        game_map = bagerMove(i, j, game_map)
+
                 
     # Задержка для синхронизации FPS
     clock.tick(FPS)
