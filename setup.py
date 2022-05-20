@@ -16,6 +16,7 @@ playGame = True
 
 count_candy = 0
 level_candy = 0
+level_bush_c = 0
 
 MENU = 0
 RESTART = 1
@@ -46,7 +47,7 @@ i_dont_no = pygame.image.load("png/i_dont_no.png")
 i_dont_no_brr = pygame.image.load("png/i_dont_no_brr.png")
 agi = pygame.image.load("png/agi.png")
 bush = pygame.image.load("png/bush.png")
-
+bush_c = pygame.image.load("png/bush_c.png")
 
 
 

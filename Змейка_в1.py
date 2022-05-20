@@ -23,6 +23,13 @@ def check_candy(snake, game_map):
         return True    
     return False
 
+def check_bush_c(snake, game_map):
+    """ Возвращает True когда змейка ест конфету с кустами. """
+    if game_map[snake[0][1]][snake[0][0]] == 8:
+        game_map[snake[0][1]][snake[0][0]] = 3
+        return True
+    return False
+
 def check_portal(snake, game_map):
     """ Возвращает True когда змейка на портале. """
     if game_map[snake[0][1]][snake[0][0]] == 4:
@@ -159,7 +166,8 @@ while (playGame):
             
         if level == 3:
             game_map = Level03()
-            word = Word03() 
+            word = Word03()
+            level_bush_c = 10
             level_candy = getCountCandys(game_map)
             snake = [[13, 4],
                      [14, 4],
@@ -168,6 +176,7 @@ while (playGame):
         if level == 4:
             game_map = Level04()
             word = Word04()
+            level_bush_c = 6
             level_candy = getCountCandys(game_map)
             snake = [[1, 17],
                      [1, 18]]
@@ -178,12 +187,14 @@ while (playGame):
             level_candy = getCountCandys(game_map)
             snake = [[8, 15],
                      [8, 16]]
+
         if level == 6:
             game_map = Level06()
             word = Word06()
+            level_bush_c = 4
             level_candy = getCountCandys(game_map)
-            snake = [[5, 8],
-                     [5, 7]]
+            snake = [[28, 4],
+                     [28, 3]]
 
         print(f"Количество кэнди на уровне {level} = {level_candy}")
         GAME_STATE = PLAY 
@@ -229,7 +240,8 @@ while (playGame):
                     scene.blit(i_dont_no_brr, (j * 32, i * 32))
                 elif SQUARE == 7:
                     scene.blit(agi, (j * 32, i * 32))
-
+                elif SQUARE == 8:
+                    scene.blit(bush_c, (j * 32, i * 32))
 
         # Выводим голову
         if move == STOP:
@@ -278,6 +290,10 @@ while (playGame):
             snake.append([snake[0][0], snake[0][1]])
 
         if check_candy(snake, game_map):
+            count_candy += 1
+            snake.append([snake[0][0], snake[0][1]])
+
+        if check_bush_c(snake, game_map):
             count_candy += 1
             snake.append([snake[0][0], snake[0][1]])
 
