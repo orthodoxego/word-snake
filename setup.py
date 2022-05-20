@@ -20,6 +20,7 @@ count_frame = 0
 speed_snake = 10
 
 playGame = True
+viewNumberSquare = True
 
 count_candy = 0
 level_candy = 0
@@ -39,7 +40,6 @@ LEFT = 3
 RIGHT = 4
 STOP = 0
 move = STOP
-
 
 badger = None
 

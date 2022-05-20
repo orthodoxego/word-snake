@@ -135,6 +135,7 @@ def is_letter(word, x, y):
 pygame.init()
 
 word_font = pygame.font.Font("font/chava.ttf", 32)
+little_font = pygame.font.Font("font/chava.ttf", 13)
 
 # Настройка ширины и высоты окнa
 size = [WIDTH, HEIGHT]
@@ -270,6 +271,12 @@ while (playGame):
                 elif SQUARE == 8:
                     scene.blit(bush_c, (j * 32, i * 32))
 
+                # Выводить ли номера клеток? (настраивается в setup)
+                if (viewNumberSquare):
+                    txt = little_font.render(f"{SQUARE}", True, (0, 0, 0))
+                    scene.blit(txt, (j * 32 + 13, i * 32 + 9))
+                    txt = little_font.render(f"{SQUARE}", True, (200, 200, 128))
+                    scene.blit(txt, (j * 32 + 12, i * 32 + 8))
 
 
         # Выводим голову
@@ -352,7 +359,8 @@ while (playGame):
                     word_complete = True
 
         # Двигаем медоедов при их наличии
-        if (count_frame % (speed_snake * 2) == 0):
+        # Скорость регулируется в speed_snake // 2 - чем выше число в скобках, тем медленней
+        if (count_frame % (speed_snake // 2) == 0):
             for i in range(len(badger_position)):
                 badger_position[i] = bagerMove(badger_position[i], game_map)
 
