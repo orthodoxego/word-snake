@@ -55,6 +55,6 @@ i_dont_no_brr = pygame.image.load("png/i_dont_no_brr.png")
 agi = pygame.image.load("png/agi.png")
 bush = pygame.image.load("png/bush.png")
 bush_c = pygame.image.load("png/bush_c.png")
-
-
-
+honey_badger1 = pygame.image.load("png/honey_badger.1.png")
+honey_badger3 = pygame.image.load("png/honey_badger.3.png")
+honey_badger4 = pygame.image.load("png/honey_badger.4.png")

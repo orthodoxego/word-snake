@@ -194,6 +194,14 @@ while (playGame):
             word = Word06()
             level_bush_c = 4
             level_candy = getCountCandys(game_map)
+            snake = [[32, 11],
+                     [33, 11]]
+
+        if level == 7:
+            game_map = Level07()
+            word = Word07()
+            level_bush_c = 2
+            level_candy = getCountCandys(game_map)
             snake = [[28, 4],
                      [28, 3]]
 
