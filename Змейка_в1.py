@@ -254,8 +254,13 @@ while (playGame):
                 elif SQUARE == 8:
                     scene.blit(bush_c, (j * 32, i * 32))
                 elif SQUARE == 10:
-                    scene.blit(honey_badger4, (j * 32, i * 32))
-                    if (count_frame % speed_snake == 0):
+                    if (bager_move == RIGHT):
+                        scene.blit(honey_badger4, (j * 32, i * 32))
+                    if (bager_move == UP):
+                        scene.blit(honey_badger1, (j * 32, i * 32))
+                    if (bager_move == DOWN):
+                        scene.blit(honey_badger3, (j * 32, i * 32))
+                    if (count_frame % (speed_snake * 3) == 0):
                         game_map = bagerMove(i, j, game_map)
 
         # Выводим голову
