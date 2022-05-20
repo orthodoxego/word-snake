@@ -308,12 +308,14 @@ while (playGame):
 
         # Выводим медоедов
         for i in range(len(badger_position)):
-            if (badger_position[i][2] == RIGHT):
-                scene.blit(honey_badger4, (badger_position[i][1] * 32, badger_position[i][0] * 32))
             if (badger_position[i][2] == UP):
                 scene.blit(honey_badger1, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+            if (badger_position[i][2] == LEFT):
+                scene.blit(honey_badger2, (badger_position[i][1] * 32, badger_position[i][0] * 32))
             if (badger_position[i][2] == DOWN):
                 scene.blit(honey_badger3, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+            if (badger_position[i][2] == RIGHT):
+                scene.blit(honey_badger4, (badger_position[i][1] * 32, badger_position[i][0] * 32))
 
         # Выводим сообщения поверх всего остального
         draw_text(scene)
@@ -350,7 +352,7 @@ while (playGame):
                     word_complete = True
 
         # Двигаем медоедов при их наличии
-        if (count_frame % (speed_snake * 2) == 0):
+        if (count_frame % (speed_snake // 2) == 0):
             for i in range(len(badger_position)):
                 badger_position[i] = bagerMove(badger_position[i], game_map)
 
