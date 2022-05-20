@@ -5,6 +5,20 @@ from setup import *
 from maps import *
 from honey_badger.honey_badger import *
 
+def getBagerPositions():
+    # Выводим изображение карты
+    bp = []
+    for i in range(len(game_map)):
+        for j in range(len(game_map[i])):
+            SQUARE = game_map[i][j]
+            if SQUARE == a:
+                bp.append([i, j, randint(1, 4)])
+                print(game_map[i][j])
+                game_map[i][j] = 0
+                print(game_map[i][j])
+    return bp
+
+
 def draw_text(scene):
     text_to_screen_color = (255, 200, 200)
     text_to_screen_word = "ГОТОВО! НАЙДИТЕ ПЕРЕХОД НА УРОВЕНЬ!"
@@ -190,8 +204,10 @@ while (playGame):
                      [8, 16]]
 
         if level == 6:
-            # + медоеды
             game_map = Level06()
+            # + медоеды
+            badger_position = getBagerPositions()
+
             word = Word06()
             level_bush_c = 4
             level_candy = getCountCandys(game_map)
@@ -253,13 +269,7 @@ while (playGame):
                     scene.blit(agi, (j * 32, i * 32))
                 elif SQUARE == 8:
                     scene.blit(bush_c, (j * 32, i * 32))
-                elif SQUARE == a:
-                    if (bager_move == RIGHT):
-                        scene.blit(honey_badger4, (j * 32, i * 32))
-                    if (bager_move == UP):
-                        scene.blit(honey_badger1, (j * 32, i * 32))
-                    if (bager_move == DOWN):
-                        scene.blit(honey_badger3, (j * 32, i * 32))
+
 
 
         # Выводим голову
@@ -278,7 +288,7 @@ while (playGame):
             snake, move = move_snake(snake, move)
             scene.blit(snake04, (snake[0][0] * 32, snake[0][1] * 32))
 
-        
+
         # Выводим тело змеи и хвост
         for i in range(1, len(snake)):
             scene.blit(snake_body, (snake[i][0] * 32, snake[i][1] * 32))
@@ -295,6 +305,15 @@ while (playGame):
             if word[i][3] == False:
                 txt = word_font.render(word[i][0], True, (255, 255, 0))
                 scene.blit(txt, (word[i][1] * 32 + 3, word[i][2] * 32 - 3))
+
+        # Выводим медоедов
+        for i in range(len(badger_position)):
+            if (badger_position[i][2] == RIGHT):
+                scene.blit(honey_badger4, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+            if (badger_position[i][2] == UP):
+                scene.blit(honey_badger1, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+            if (badger_position[i][2] == DOWN):
+                scene.blit(honey_badger3, (badger_position[i][1] * 32, badger_position[i][0] * 32))
 
         # Выводим сообщения поверх всего остального
         draw_text(scene)
@@ -331,14 +350,11 @@ while (playGame):
                     word_complete = True
 
         # Двигаем медоедов при их наличии
-        if (count_frame % (speed_snake * 5) == 0):
-            for i in range(len(game_map)):
-                for j in range(len(game_map[i])):
-                    SQUARE = game_map[i][j]
-                    if SQUARE == a:
-                        game_map = bagerMove(i, j, game_map)
+        if (count_frame % (speed_snake * 2) == 0):
+            for i in range(len(badger_position)):
+                badger_position[i] = bagerMove(badger_position[i], game_map)
 
-                
+
     # Задержка для синхронизации FPS
     clock.tick(FPS)
     count_frame += 1
