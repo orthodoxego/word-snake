@@ -189,6 +189,7 @@ while (playGame):
                      [8, 16]]
 
         if level == 6:
+            # + медоеды
             game_map = Level06()
             word = Word06()
             level_bush_c = 4
