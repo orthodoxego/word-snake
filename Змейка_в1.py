@@ -352,7 +352,7 @@ while (playGame):
                     word_complete = True
 
         # Двигаем медоедов при их наличии
-        if (count_frame % (speed_snake // 2) == 0):
+        if (count_frame % (speed_snake * 2) == 0):
             for i in range(len(badger_position)):
                 badger_position[i] = bagerMove(badger_position[i], game_map)
 
