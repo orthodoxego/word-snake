@@ -41,6 +41,8 @@ STOP = 0
 move = STOP
 
 
+badger = None
+
 brick = pygame.image.load("png/brick.png")
 candy = pygame.image.load("png/candy.png")
 snake00 = pygame.image.load("png/snake00.png")

@@ -3,6 +3,7 @@
 import pygame
 from setup import *
 from maps import *
+from honey_badger.honey_badger import *
 
 def draw_text(scene):
     text_to_screen_color = (255, 200, 200)
@@ -194,8 +195,9 @@ while (playGame):
             word = Word06()
             level_bush_c = 4
             level_candy = getCountCandys(game_map)
-            snake = [[32, 11],
-                     [33, 11]]
+            snake = [[32, 10],
+                     [33, 10]]
+
 
         if level == 7:
             game_map = Level07()
@@ -251,6 +253,10 @@ while (playGame):
                     scene.blit(agi, (j * 32, i * 32))
                 elif SQUARE == 8:
                     scene.blit(bush_c, (j * 32, i * 32))
+                elif SQUARE == 10:
+                    scene.blit(honey_badger4, (j * 32, i * 32))
+                    if (count_frame % speed_snake == 0):
+                        game_map = bagerMove(i, j, game_map)
 
         # Выводим голову
         if move == STOP:
@@ -323,7 +329,7 @@ while (playGame):
     # Задержка для синхронизации FPS
     clock.tick(FPS)
     count_frame += 1
-    if count_frame > 1000:
+    if count_frame > 100000:
         count_frame = 0    
 
 # Конец истории
