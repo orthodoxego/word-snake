@@ -5,6 +5,7 @@ import pygame
 # Режим игры
 LEARN = 0
 TEST = 1
+GAMEMODE = LEARN
 
 WIDTH = 1120
 HEIGHT = 640
@@ -31,7 +32,8 @@ RESTART = 1
 PLAY = 2
 GAME_OVER = 3
 
-GAME_STATE = RESTART
+# GAME_STATE = RESTART
+GAME_STATE = MENU
 level = 6
 
 UP = 1
@@ -42,6 +44,9 @@ STOP = 0
 move = STOP
 
 badger = None
+
+
+background = pygame.image.load("png/background.png")
 
 brick = pygame.image.load("png/brick.png")
 candy = pygame.image.load("png/candy.png")

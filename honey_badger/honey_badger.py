@@ -19,28 +19,24 @@ def bagerMove(bp, game_map):
 
     if (bager_move == DOWN):
         if (game_map[x + 1][y] == 0):
-            # game_map[x + 1][y] = a
             bp[0] += 1
         else:
             bager_move = getNewMove(bager_move)
 
     if (bager_move == UP):
         if (game_map[x - 1][y] == 0):
-            # game_map[x - 1][y] = a
             bp[0] -= 1
         else:
             bager_move = getNewMove(bager_move)
 
     if (bager_move == RIGHT):
         if (game_map[x][y + 1] == 0):
-            # game_map[x][y + 1] = a
             bp[1] += 1
         else:
             bager_move = getNewMove(bager_move)
 
     if (bager_move == LEFT):
         if (game_map[x][y - 1] == 0):
-            # game_map[x][y - 1] = a
             bp[1] -= 1
         else:
             bager_move = getNewMove(bager_move)

@@ -4,6 +4,7 @@ import pygame
 from setup import *
 from maps import *
 from honey_badger.honey_badger import *
+from services.menu import *
 
 def getBagerPositions():
     # Выводим изображение карты
@@ -13,9 +14,7 @@ def getBagerPositions():
             SQUARE = game_map[i][j]
             if SQUARE == a:
                 bp.append([i, j, randint(1, 4)])
-                print(game_map[i][j])
                 game_map[i][j] = 0
-                print(game_map[i][j])
     return bp
 
 
@@ -135,6 +134,7 @@ def is_letter(word, x, y):
 pygame.init()
 
 word_font = pygame.font.Font("font/chava.ttf", 32)
+medium_font = pygame.font.Font("font/chava.ttf", 16)
 little_font = pygame.font.Font("font/chava.ttf", 13)
 
 # Настройка ширины и высоты окнa
@@ -153,7 +153,11 @@ clock = pygame.time.Clock()
 # ГЛАВНЫЙ ЦИКЛ ИГРЫ
 while (playGame):
 
-    if GAME_STATE == RESTART:
+    if GAME_STATE == MENU:
+        playGame, select_menu, GAMEMODE = menu(pygame, scene, word_font, medium_font, clock, FPS)
+        if (select_menu == 1): GAME_STATE = RESTART
+
+    elif GAME_STATE == RESTART:
         num_letter = 1              # Активная буква - нулевая в слове
         count_candy = 0             # Количество леденцов на карте
         word_complete = False       # Собрано ли слово полностью?
