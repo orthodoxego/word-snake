@@ -5,6 +5,7 @@ from setup import *
 from maps import *
 from honey_badger.honey_badger import *
 from services.menu import *
+from services.screen_saver import *
 
 def getBagerPositions():
     # Выводим изображение карты
@@ -16,7 +17,6 @@ def getBagerPositions():
                 bp.append([i, j, randint(1, 4)])
                 game_map[i][j] = 0
     return bp
-
 
 def draw_text(scene):
     text_to_screen_color = (255, 200, 200)
@@ -155,12 +155,14 @@ while (playGame):
 
     if GAME_STATE == MENU:
         playGame, select_menu, GAMEMODE = menu(pygame, scene, word_font, medium_font, clock, FPS)
-        if (select_menu == 1): GAME_STATE = RESTART
+        if (select_menu > 0):
+            GAME_STATE = RESTART
 
     elif GAME_STATE == RESTART:
         num_letter = 1              # Активная буква - нулевая в слове
         count_candy = 0             # Количество леденцов на карте
         word_complete = False       # Собрано ли слово полностью?
+        badger_position = []
         
         if level == 1:                       
             game_map = Level01()
@@ -229,7 +231,11 @@ while (playGame):
                      [28, 3]]
 
         print(f"Количество кэнди на уровне {level} = {level_candy}")
-        GAME_STATE = PLAY 
+        GAME_STATE = SCREEN_SAVER
+
+    # ЭКРАННАЯ ЗАСТАВКА ПЕРЕД УРОВНЕМ
+    elif GAME_STATE == SCREEN_SAVER:
+        playGame, GAME_STATE = screen_saver(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
 
     if GAME_STATE == PLAY:
         # Проверяем нажатые клавиши
@@ -352,7 +358,7 @@ while (playGame):
         if level_candy == count_candy:
             if check_portal(snake, game_map):
                 level += 1
-                GAME_STATE = RESTART
+                GAME_STATE = SCREEN_SAVER
 
         # Определяет, съела ли змейка правильную букву
         if count_frame % speed_snake != 0:
@@ -364,6 +370,7 @@ while (playGame):
 
         # Двигаем медоедов при их наличии
         # Скорость регулируется в speed_snake // 2 - чем выше число в скобках, тем медленней
+        # Если медоедов нет, то len(bager_position) будет равно 0, следовательно, цикл for не выполнится
         if (count_frame % (speed_snake // 2) == 0):
             for i in range(len(badger_position)):
                 badger_position[i] = bagerMove(badger_position[i], game_map)

@@ -21,20 +21,19 @@ count_frame = 0
 speed_snake = 10
 
 playGame = True
-viewNumberSquare = True
+viewNumberSquare = False
 
 count_candy = 0
 level_candy = 0
 level_bush_c = 0
 
 MENU = 0
-RESTART = 1
-PLAY = 2
-GAME_OVER = 3
-
-# GAME_STATE = RESTART
+SCREEN_SAVER = 1
+RESTART = 2
+PLAY = 3
+GAME_OVER = 4
 GAME_STATE = MENU
-level = 6
+level = 1
 
 UP = 1
 DOWN = 2
@@ -69,3 +68,15 @@ honey_badger1 = pygame.image.load("png/honey_badger.1.png")
 honey_badger2 = pygame.image.load("png/honey_badger.2.png")
 honey_badger3 = pygame.image.load("png/honey_badger.3.png")
 honey_badger4 = pygame.image.load("png/honey_badger.4.png")
+
+# Изображения для экранной заставки
+screen_img = [pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png"),
+              pygame.image.load("png/animals/img001.png")]
