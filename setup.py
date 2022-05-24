@@ -1,6 +1,8 @@
 from random import randint
 import pygame
 
+level = 1
+
 # Считать ошибки в тесте
 # Режим игры
 LEARN = 0
@@ -33,7 +35,6 @@ RESTART = 2
 PLAY = 3
 GAME_OVER = 4
 GAME_STATE = MENU
-level = 1
 
 UP = 1
 DOWN = 2

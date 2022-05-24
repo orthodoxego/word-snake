@@ -221,7 +221,6 @@ while (playGame):
             snake = [[32, 10],
                      [33, 10]]
 
-
         if level == 7:
             game_map = Level07()
             word = Word07()
@@ -358,7 +357,7 @@ while (playGame):
         if level_candy == count_candy:
             if check_portal(snake, game_map):
                 level += 1
-                GAME_STATE = SCREEN_SAVER
+                GAME_STATE = RESTART
 
         # Определяет, съела ли змейка правильную букву
         if count_frame % speed_snake != 0:

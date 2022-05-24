@@ -10,6 +10,12 @@ def screen_saver(pg: pygame, scene, GAMEMODE, word_font, level, word, clock, FPS
 
     scene.blit(screen_img[level - 1], ((WIDTH - 640) // 2, 100))
 
+    msg = f"Отлично! Следующий уровень: {level}"
+    if (level == 1):
+        msg = f"Привет, путешественник! Тебя ждёт уровень 1!"
+    txt = word_font.render(msg, True, (255, 255, 128))
+    scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 50))
+
     msg = f"Животное: {word[0][1]}, по-английски: {word[0][0]}"
     if (GAMEMODE == TEST):
         msg = f"Животное: {word[0][1]}"
@@ -33,7 +39,7 @@ def screen_saver(pg: pygame, scene, GAMEMODE, word_font, level, word, clock, FPS
                 return False, RESTART
             if (event.key == pg.K_RETURN):
                 return True, PLAY
-            if (event.key == pg.L_SPACE):
+            if (event.key == pg.K_SPACE):
                 return True, PLAY
         elif (event.type == pg.MOUSEBUTTONDOWN):
             if event.button == 1:
