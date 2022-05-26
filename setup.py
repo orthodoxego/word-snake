@@ -1,6 +1,6 @@
 from random import randint
 import pygame
-
+pygame.init()
 level = 6
 
 # Сколько попыток на прохождение игры
@@ -68,10 +68,10 @@ bush_c = pygame.image.load("png/bush_c.png")
 
 
 # ВСЁ, ЧТО СВЯЗАНО С МЕДОЕДОМ
-honey_badger1 = pygame.image.load("png/honey_badger.1.png")
-honey_badger2 = pygame.image.load("png/honey_badger.2.png")
-honey_badger3 = pygame.image.load("png/honey_badger.3.png")
-honey_badger4 = pygame.image.load("png/honey_badger.4.png")
+honey_badger1 = pygame.image.load("png/vacuum_cleaner_1.png")
+honey_badger2 = pygame.image.load("png/vacuum_cleaner_2.png")
+honey_badger3 = pygame.image.load("png/vacuum_cleaner_3.png")
+honey_badger4 = pygame.image.load("png/vacuum_cleaner_4.png")
 
 # Изображения для экранной заставки
 screen_img = [pygame.image.load("png/animals/cat.png"),
@@ -82,3 +82,9 @@ screen_img = [pygame.image.load("png/animals/cat.png"),
               pygame.image.load("png/animals/pig.png"),
               pygame.image.load("png/animals/fox.png"),
               pygame.image.load("png/animals/wolf.png")]
+
+snd = [ pygame.mixer.Sound("music/bym.mp3"),
+        pygame.mixer.Sound("music/muzyka-iz-filma-uzhasov-1.mp3"),
+        pygame.mixer.Sound("music/sfx-2.mp3"),
+        pygame.mixer.Sound("music/snd_awkward.mp3"),
+        pygame.mixer.Sound("music/ymu_b.mp3")]
