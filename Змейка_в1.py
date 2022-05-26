@@ -7,6 +7,12 @@ from honey_badger.honey_badger import *
 from services.menu import *
 from services.screen_saver import *
 
+# Есть ли свободная клетка для движения змейки
+def no_move_snake(gm):
+    nx = snake[0][0]
+    ny = snake[0][1]
+
+
 def getBagerPositions():
     # Выводим изображение карты
     bp = []
@@ -27,8 +33,14 @@ def draw_text(scene):
 
     txt = word_font.render(text_to_screen_word, True, (32, 32, 32))
     scene.blit(txt, (WIDTH - word_font.size(text_to_screen_word)[0] - 5, -2))
+
     txt = word_font.render(text_to_screen_word, True, text_to_screen_color)
     scene.blit(txt, (WIDTH - word_font.size(text_to_screen_word)[0] - 8, -5))
+
+    text_to_screen_color = (255, 255, 200)
+    text_to_screen_word = f"Попыток: {player_try}"
+    txt = word_font.render(text_to_screen_word, True, text_to_screen_color)
+    scene.blit(txt, (32, -5))
 
 def check_candy(snake, game_map):
     """ Возвращает True когда змейка ест конфету. """
@@ -367,12 +379,19 @@ while (playGame):
                 if num_letter == len(word):
                     word_complete = True
 
+            # Если змейке некуда идти
+            if (no_move_snake(game_map)):
+                print("Змейка затупила")
+
         # Двигаем медоедов при их наличии
         # Скорость регулируется в speed_snake // 2 - чем выше число в скобках, тем медленней
         # Если медоедов нет, то len(bager_position) будет равно 0, следовательно, цикл for не выполнится
         if (count_frame % (speed_snake // 2) == 0):
             for i in range(len(badger_position)):
                 badger_position[i] = bagerMove(badger_position[i], game_map)
+
+
+
 
 
     # Задержка для синхронизации FPS
