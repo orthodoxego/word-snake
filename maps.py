@@ -29,6 +29,10 @@ SQUARE_CAT = 7
 # f - мороженое
 # g - какао
 # h - пчела
+# i - снеговик 1
+# j - снеговик 2
+# k - снег
+# l - снежки
 a = 10
 b = 11
 c = 12
@@ -37,6 +41,10 @@ e = 14
 f = 15
 g = 16
 h = 17
+i = 18
+j = 19
+k = 20
+l = 21
 
 def Level01():
     gmap = []
@@ -280,10 +288,10 @@ def Level07():
 def Word07():
     gmap = []
 
-    gmap.append(["CAR", "МАШИНА"])
-    gmap.append(["C", 33, 3, False])
-    gmap.append(["A", 24, 13, False])
-    gmap.append(["R", 6, 11, False])
+    gmap.append(["FOX", "ЛИСА"])
+    gmap.append(["F", 33, 3, False])
+    gmap.append(["O", 24, 13, False])
+    gmap.append(["X", 6, 11, False])
     return gmap
 
 def Level08():
@@ -314,14 +322,12 @@ def Level08():
 def Word08():
     gmap = []
 
-    gmap.append(["GOODBYE", "ДО СВИДАНИЯ"])
-    gmap.append(["G", 16, 4, False])
+    gmap.append(["WOLF", "ВОЛК"])
+    gmap.append(["W", 16, 4, False])
     gmap.append(["O", 3, 14, False])
-    gmap.append(["O", 10, 7, False])
-    gmap.append(["D", 31, 2, False])
-    gmap.append(["B", 14, 14, False])
-    gmap.append(["Y", 27, 2, False])
-    gmap.append(["E", 34, 18, False])
+    gmap.append(["L", 10, 7, False])
+    gmap.append(["F", 31, 2, False])
+
     return gmap
 
 
