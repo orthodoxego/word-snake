@@ -6,11 +6,42 @@ from maps import *
 from honey_badger.honey_badger import *
 from services.menu import *
 from services.screen_saver import *
+from services.next_try import *
 
 # Есть ли свободная клетка для движения змейки
 def no_move_snake(gm):
     nx = snake[0][0]
     ny = snake[0][1]
+
+    count_field_snake = 0
+    nnx = nx + 1
+    nny = ny
+    for i in range(1, len(snake)):
+        if (snake[i][0] == nnx and snake[i][1] == nny):
+            count_field_snake += 1
+
+    nnx = nx - 1
+    nny = ny
+    for i in range(1, len(snake)):
+        if (snake[i][0] == nnx and snake[i][1] == nny):
+            count_field_snake += 1
+
+    nnx = nx
+    nny = ny + 1
+    for i in range(1, len(snake)):
+        if (snake[i][0] == nnx and snake[i][1] == nny):
+            count_field_snake += 1
+
+    nnx = nx
+    nny = ny - 1
+    for i in range(1, len(snake)):
+        if (snake[i][0] == nnx and snake[i][1] == nny):
+            count_field_snake += 1
+
+    if (count_field_snake == 4):
+        return True
+
+    return False
 
 
 def getBagerPositions():
@@ -248,7 +279,13 @@ while (playGame):
     elif GAME_STATE == SCREEN_SAVER:
         playGame, GAME_STATE = screen_saver(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
 
-    if GAME_STATE == PLAY:
+    # ЭКРАННАЯ ЗАСТАВКА ПЕРЕД УРОВНЕМ
+    elif GAME_STATE == NEXT_TRY:
+        if (count_frame > 60):
+            playGame, GAME_STATE = next_try(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
+            count_frame = 100
+
+    elif GAME_STATE == PLAY:
         # Проверяем нажатые клавиши
         for event in pygame.event.get():
             if (event.type == pygame.QUIT):
@@ -382,7 +419,10 @@ while (playGame):
             # ---------------------------------------------------------------
             # Если змейке некуда идти
             if (no_move_snake(game_map)):
-                print("Змейка затупила")
+                count_frame = 0
+                player_try -= 1
+                move = STOP
+                GAME_STATE = NEXT_TRY
             # ---------------------------------------------------------------
 
         # Двигаем медоедов при их наличии
@@ -391,9 +431,6 @@ while (playGame):
         if (count_frame % (speed_snake // 2) == 0):
             for i in range(len(badger_position)):
                 badger_position[i] = bagerMove(badger_position[i], game_map)
-
-
-
 
 
     # Задержка для синхронизации FPS

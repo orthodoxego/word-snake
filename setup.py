@@ -37,6 +37,7 @@ SCREEN_SAVER = 1
 RESTART = 2
 PLAY = 3
 GAME_OVER = 4
+NEXT_TRY = 5
 GAME_STATE = MENU
 
 UP = 1
@@ -81,7 +82,8 @@ screen_img = [pygame.image.load("png/animals/cat.png"),
               pygame.image.load("png/animals/giraffi.png"),
               pygame.image.load("png/animals/pig.png"),
               pygame.image.load("png/animals/fox.png"),
-              pygame.image.load("png/animals/wolf.png")]
+              pygame.image.load("png/animals/wolf.png"),
+              pygame.image.load("png/animals/snake_cry.png")]
 
 snd = [ pygame.mixer.Sound("music/bym.mp3"),
         pygame.mixer.Sound("music/muzyka-iz-filma-uzhasov-1.mp3"),

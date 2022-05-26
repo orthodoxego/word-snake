@@ -5,6 +5,8 @@ def menu(pg: pygame, scene, word_font, medium_font, clock, FPS):
     # Выводит на экран меню. Возвращает False,
     # если пользователь выбрал выход
 
+    select_menu = -1
+
     mouse_y = pygame.mouse.get_pos()[1]
 
     # Очищаем сцену
@@ -70,11 +72,12 @@ def menu(pg: pygame, scene, word_font, medium_font, clock, FPS):
                 return True, 1, 0
         elif (event.type == pg.MOUSEBUTTONDOWN):
             if event.button == 1:
-                if (select_menu == 1):
-                    return True, 1, LEARN
-                if (select_menu == 2):
-                    return True, 1, TEST
-                if (select_menu == 3):
-                    return False, 0, 0
+                if (select_menu != -1):
+                    if (select_menu == 1):
+                        return True, 1, LEARN
+                    if (select_menu == 2):
+                        return True, 1, TEST
+                    if (select_menu == 3):
+                        return False, 0, 0
 
     return True, 0, 0
