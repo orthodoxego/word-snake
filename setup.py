@@ -82,3 +82,12 @@ screen_img = [pygame.image.load("png/animals/cat.png"),
               pygame.image.load("png/animals/pig.png"),
               pygame.image.load("png/animals/fox.png"),
               pygame.image.load("png/animals/wolf.png")]
+
+snd = [ pygame.mixer.Sound("music/"),
+        pygame.mixer.Sound("music/"),
+        pygame.mixer.Sound("music/"),
+        pygame.mixer.Sound("music/"),
+        pygame.mixer.Sound("music/"),
+        pygame.mixer.Sound("music/"),
+        pygame.mixer.Sound("music/")]
+
