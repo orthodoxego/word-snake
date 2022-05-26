@@ -1,7 +1,7 @@
 from random import randint
 import pygame
 
-level = 1
+level = 6
 
 # Сколько попыток на прохождение игры
 player_try = 3
@@ -74,13 +74,11 @@ honey_badger3 = pygame.image.load("png/honey_badger.3.png")
 honey_badger4 = pygame.image.load("png/honey_badger.4.png")
 
 # Изображения для экранной заставки
-screen_img = [pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png"),
-              pygame.image.load("png/animals/img001.png")]
+screen_img = [pygame.image.load("png/animals/cat.png"),
+              pygame.image.load("png/animals/dog.png"),
+              pygame.image.load("png/animals/rabbit.png"),
+              pygame.image.load("png/animals/duck.png"),
+              pygame.image.load("png/animals/giraffi.png"),
+              pygame.image.load("png/animals/pig.png"),
+              pygame.image.load("png/animals/fox.png"),
+              pygame.image.load("png/animals/wolf.png")]
