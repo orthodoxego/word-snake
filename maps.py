@@ -19,7 +19,7 @@ SQUARE_APPEND_SNAKE = 5
 SQUARE_REMOVE_SNAKE = 6
 # 7 - кот
 SQUARE_CAT = 7
-# 8 - тарава с конфетой
+# 8 - трава с конфетой
 # 9 - труба
 # a - медоед
 # b - труба и медоед

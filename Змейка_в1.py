@@ -109,7 +109,7 @@ def getCountCandys(gm):
 
     for i in range(len(gm)):
         for j in range(len(gm[i])):
-            if gm[i][j] == 2:
+            if gm[i][j] == 2 or gm[i][j] == 8:
                 count += 1
                 
     return count
@@ -365,8 +365,8 @@ while (playGame):
             count_candy += 1
             snake.append([snake[0][0], snake[0][1]])
 
-        # Если количество конфет на уровне == собранным конфетам
-        if level_candy == count_candy:
+        # Если количество конфет на уровне == собранным конфетам и слово собрано
+        if level_candy == count_candy and word_complete:
             if check_portal(snake, game_map):
                 level += 1
                 GAME_STATE = RESTART
