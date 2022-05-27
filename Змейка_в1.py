@@ -59,6 +59,7 @@ def no_move_snake(gm):
     for i in range(len(badger_position)):
         for j in range(len(snake)):
             if (badger_position[i][1] == snake[j][0] and badger_position[i][0] == snake[j][1]):
+                snd[4].play()
                 return True
 
     count_field_snake = 0
