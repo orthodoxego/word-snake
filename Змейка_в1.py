@@ -8,12 +8,71 @@ from services.menu import *
 from services.screen_saver import *
 from services.next_try import *
 
+# Выводит кирпичную стену
+def draw_brick():
+    for i in range(len(game_map)):
+        for j in range(len(game_map[i])):
+            SQUARE = game_map[i][j]
+            if SQUARE == BRICK:
+                scene.blit(brick, (j * 32, i * 32))
+
+# Выводит пылесосы
+def draw_vacuum_cleaner():
+    for i in range(len(badger_position)):
+        if (badger_position[i][2] == UP):
+            scene.blit(honey_badger1, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+        if (badger_position[i][2] == LEFT):
+            scene.blit(honey_badger2, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+        if (badger_position[i][2] == DOWN):
+            scene.blit(honey_badger3, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+        if (badger_position[i][2] == RIGHT):
+            scene.blit(honey_badger4, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+
+# Выводит змейку на экран
+def draw_snake(scene, move, snake):
+    # Выводим голову
+    if move == STOP:
+        scene.blit(snake00, (snake[0][0] * 32, snake[0][1] * 32))
+    elif move == UP:
+        snake, move = move_snake(snake, move)
+        scene.blit(snake01, (snake[0][0] * 32, snake[0][1] * 32))
+    elif move == DOWN:
+        snake, move = move_snake(snake, move)
+        scene.blit(snake02, (snake[0][0] * 32, snake[0][1] * 32))
+    elif move == LEFT:
+        snake, move = move_snake(snake, move)
+        scene.blit(snake03, (snake[0][0] * 32, snake[0][1] * 32))
+    elif move == RIGHT:
+        snake, move = move_snake(snake, move)
+        scene.blit(snake04, (snake[0][0] * 32, snake[0][1] * 32))
+
+    # Выводим тело змеи и хвост
+    for i in range(1, len(snake)):
+        scene.blit(snake_body, (snake[i][0] * 32, snake[i][1] * 32))
+
 # Есть ли свободная клетка для движения змейки
 def no_move_snake(gm):
     nx = snake[0][0]
     ny = snake[0][1]
 
+    for i in range(len(badger_position)):
+        for j in range(len(snake)):
+            if (badger_position[i][1] == snake[j][0] and badger_position[i][0] == snake[j][1]):
+                return True
+
     count_field_snake = 0
+
+    # Расчёт окружения стенами
+
+    if (game_map[ny][nx + 1] == 1):
+        count_field_snake += 1
+    if (game_map[ny][nx - 1] == 1):
+        count_field_snake += 1
+    if (game_map[ny + 1][nx] == 1):
+        count_field_snake += 1
+    if (game_map[ny - 1][nx] == 1):
+        count_field_snake += 1
+
     nnx = nx + 1
     nny = ny
     for i in range(1, len(snake)):
@@ -42,7 +101,6 @@ def no_move_snake(gm):
         return True
 
     return False
-
 
 def getBagerPositions():
     # Выводим изображение карты
@@ -184,7 +242,7 @@ little_font = pygame.font.Font("font/chava.ttf", 13)
 size = [WIDTH, HEIGHT]
 
 # Установка заголовка окна
-pygame.display.set_caption("Шаблон pygame")
+pygame.display.set_caption("Змейка-буквоед")
 
 # Инициализация сцены и установка размера
 scene = pygame.display.set_mode(size)
@@ -279,11 +337,18 @@ while (playGame):
     elif GAME_STATE == SCREEN_SAVER:
         playGame, GAME_STATE = screen_saver(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
 
-    # ЭКРАННАЯ ЗАСТАВКА ПЕРЕД УРОВНЕМ
+    # ЭКРАННАЯ ЗАСТАВКА ПРИ ПОРАЖЕНИИ
     elif GAME_STATE == NEXT_TRY:
-        if (count_frame > 60):
+        if (count_frame > 180):
             playGame, GAME_STATE = next_try(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
-            count_frame = 100
+            count_frame = 200
+        else:
+            scene.fill(BLACK)
+            draw_snake(scene, move, snake)
+            draw_brick()
+            draw_vacuum_cleaner()
+            draw_text(scene)
+            pygame.display.flip()
 
     elif GAME_STATE == PLAY:
         # Проверяем нажатые клавиши
@@ -337,26 +402,8 @@ while (playGame):
                     scene.blit(txt, (j * 32 + 12, i * 32 + 8))
 
 
-        # Выводим голову
-        if move == STOP:
-            scene.blit(snake00, (snake[0][0] * 32, snake[0][1] * 32))  
-        elif move == UP:
-            snake, move = move_snake(snake, move)
-            scene.blit(snake01, (snake[0][0] * 32, snake[0][1] * 32))
-        elif move == DOWN:
-            snake, move = move_snake(snake, move)
-            scene.blit(snake02, (snake[0][0] * 32, snake[0][1] * 32))
-        elif move == LEFT:
-            snake, move = move_snake(snake, move)
-            scene.blit(snake03, (snake[0][0] * 32, snake[0][1] * 32))
-        elif move == RIGHT:
-            snake, move = move_snake(snake, move)
-            scene.blit(snake04, (snake[0][0] * 32, snake[0][1] * 32))
-
-
-        # Выводим тело змеи и хвост
-        for i in range(1, len(snake)):
-            scene.blit(snake_body, (snake[i][0] * 32, snake[i][1] * 32))
+        # Рисование змеи
+        draw_snake(scene, move, snake)
 
         # Выводим траву     
         for i in range(len(game_map)):
@@ -371,16 +418,8 @@ while (playGame):
                 txt = word_font.render(word[i][0], True, (255, 255, 0))
                 scene.blit(txt, (word[i][1] * 32 + 3, word[i][2] * 32 - 3))
 
-        # Выводим медоедов
-        for i in range(len(badger_position)):
-            if (badger_position[i][2] == UP):
-                scene.blit(honey_badger1, (badger_position[i][1] * 32, badger_position[i][0] * 32))
-            if (badger_position[i][2] == LEFT):
-                scene.blit(honey_badger2, (badger_position[i][1] * 32, badger_position[i][0] * 32))
-            if (badger_position[i][2] == DOWN):
-                scene.blit(honey_badger3, (badger_position[i][1] * 32, badger_position[i][0] * 32))
-            if (badger_position[i][2] == RIGHT):
-                scene.blit(honey_badger4, (badger_position[i][1] * 32, badger_position[i][0] * 32))
+        # Выводим пылесосы
+        draw_vacuum_cleaner()
 
         # Выводим сообщения поверх всего остального
         draw_text(scene)
@@ -408,11 +447,19 @@ while (playGame):
                 level += 1
                 GAME_STATE = RESTART
 
+
+        # Двигаем медоедов при их наличии
+        # Скорость регулируется в speed_snake // 2 - чем выше число в скобках, тем медленней
+        # Если медоедов нет, то len(bager_position) будет равно 0, следовательно, цикл for не выполнится
+        if (count_frame % (speed_snake * 1) == 0):
+            for i in range(len(badger_position)):
+                badger_position[i] = bagerMove(badger_position[i], game_map)
+
         # Определяет, съела ли змейка правильную букву
         if count_frame % speed_snake != 0:
             if not word_complete and is_letter(word, snake[0][0], snake[0][1]):
-                snake.append([snake[0][0], snake[0][1]])    # Добавляет змее кусочек за собранную букву
-                num_letter += 1                             # Увеличивает номер буквы (надо собирать следующую)
+                snake.append([snake[0][0], snake[0][1]])  # Добавляет змее кусочек за собранную букву
+                num_letter += 1  # Увеличивает номер буквы (надо собирать следующую)
                 if num_letter == len(word):
                     word_complete = True
 
@@ -424,13 +471,6 @@ while (playGame):
                 move = STOP
                 GAME_STATE = NEXT_TRY
             # ---------------------------------------------------------------
-
-        # Двигаем медоедов при их наличии
-        # Скорость регулируется в speed_snake // 2 - чем выше число в скобках, тем медленней
-        # Если медоедов нет, то len(bager_position) будет равно 0, следовательно, цикл for не выполнится
-        if (count_frame % (speed_snake // 2) == 0):
-            for i in range(len(badger_position)):
-                badger_position[i] = bagerMove(badger_position[i], game_map)
 
 
     # Задержка для синхронизации FPS

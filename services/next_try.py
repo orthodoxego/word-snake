@@ -8,11 +8,11 @@ def next_try(pg: pygame, scene, GAMEMODE, word_font, level, word, clock, FPS):
     # Очищаем сцену
     scene.fill((0, 0, 0))
 
-    scene.blit(screen_img[8], ((WIDTH - 640) // 2, 100))
+    scene.blit(screen_img[8], ((WIDTH - 640) // 2, 80))
 
     msg = f"УПС! ВЫ ПОПАЛИ В БЕЗВЫХОДНУЮ СИТУАЦИЮ!"
     txt = word_font.render(msg, True, (255, 255, 128))
-    scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 50))
+    scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 20))
 
     msg = f"Списывается одна попытка"
 
