@@ -85,8 +85,8 @@ screen_img = [pygame.image.load("png/animals/cat.png"),
               pygame.image.load("png/animals/wolf.png"),
               pygame.image.load("png/animals/snake_cry.png")]
 
-snd = [ pygame.mixer.Sound("music/bym.mp3"),
-        pygame.mixer.Sound("music/muzyka-iz-filma-uzhasov-1.mp3"),
-        pygame.mixer.Sound("music/sfx-2.mp3"),
-        pygame.mixer.Sound("music/snd_awkward.mp3"),
-        pygame.mixer.Sound("music/ymu_b.mp3")]
+snd = [pygame.mixer.Sound("music/bym.mp3"),
+       pygame.mixer.Sound("music/muzyka-iz-filma-uzhasov-1.mp3"),
+       pygame.mixer.Sound("music/sfx-2.mp3"),
+       pygame.mixer.Sound("music/snd_awkward.mp3"),
+       pygame.mixer.Sound("music/ymu_b.mp3")]

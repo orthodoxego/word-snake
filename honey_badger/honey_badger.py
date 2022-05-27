@@ -14,7 +14,7 @@ def bagerMove(bp, game_map):
     x = bp[0]
     y = bp[1]
 
-    if (randint(0, 100) < 60):
+    if (randint(0, 100) < 25):
         bager_move = getNewMove(bager_move)
 
     if (bager_move == DOWN):
