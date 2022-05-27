@@ -165,9 +165,7 @@ while (playGame):
                      [17, 4],
                      [18, 4]]
 
-
-        print(f"Количество кэнди на уровне {level} = {level_candy}")
-        GAME_STATE = PLAY 
+        GAME_STATE = PLAY
 
     if GAME_STATE == PLAY:
         # Проверяем нажатые клавиши

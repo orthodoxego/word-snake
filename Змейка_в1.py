@@ -271,6 +271,8 @@ while (playGame):
             game_map = Level01()
 
             word = Word01()                         # Получаем слово для карты
+            # + медоеды
+            badger_position = getBagerPositions()
             level_candy = getCountCandys(game_map)  # Получаем количество леденцов на карте
 
             snake = [[16, 4],                       # Местоположение змейки
@@ -283,7 +285,9 @@ while (playGame):
 
         if level == 2:            
             game_map = Level02()
-            word = Word02()             
+            word = Word02()
+            # + медоеды
+            badger_position = getBagerPositions()
             level_candy = getCountCandys(game_map)
             snake = [[16, 4],
                      [17, 4],
@@ -292,6 +296,8 @@ while (playGame):
         if level == 3:
             game_map = Level03()
             word = Word03()
+            # + медоеды
+            badger_position = getBagerPositions()
             level_bush_c = 10
             level_candy = getCountCandys(game_map)
             snake = [[13, 4],
@@ -301,6 +307,8 @@ while (playGame):
         if level == 4:
             game_map = Level04()
             word = Word04()
+            # + медоеды
+            badger_position = getBagerPositions()
             level_bush_c = 6
             level_candy = getCountCandys(game_map)
             snake = [[1, 17],
@@ -309,6 +317,8 @@ while (playGame):
         if level == 5:
             game_map = Level05()
             word = Word05()
+            # + медоеды
+            badger_position = getBagerPositions()
             level_candy = getCountCandys(game_map)
             snake = [[8, 15],
                      [8, 16]]
@@ -327,6 +337,8 @@ while (playGame):
         if level == 7:
             game_map = Level07()
             word = Word07()
+            # + медоеды
+            badger_position = getBagerPositions()
             level_bush_c = 2
             level_candy = getCountCandys(game_map)
             snake = [[28, 4],
