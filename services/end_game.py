@@ -28,7 +28,6 @@ def endgame(pg: pygame, scene, GAMEMODE, word_font, level, word, clock, FPS):
     clock.tick(FPS)
 
     for event in pg.event.get():
-
         if (event.type == pg.QUIT):
             return False, RESTART
         elif (event.type == pg.KEYDOWN):

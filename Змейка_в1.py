@@ -344,6 +344,7 @@ while (playGame):
             snake = [[28, 4],
                      [28, 3]]
         pygame.event.clear()
+        pygame.event.get()
         GAME_STATE = SCREEN_SAVER
 
     # ЭКРАННАЯ ЗАСТАВКА ПЕРЕД УРОВНЕМ
@@ -353,6 +354,7 @@ while (playGame):
     # ЭКРАННАЯ ЗАСТАВКА ПРИ ПОРАЖЕНИИ
     elif GAME_STATE == NEXT_TRY:
         if (count_frame > 180):
+            pygame.event.get()
             playGame, GAME_STATE = next_try(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
             count_frame = 200
         else:
@@ -365,6 +367,7 @@ while (playGame):
 
     elif GAME_STATE == ENDGAME:
         if (count_frame > 180):
+            pygame.event.get()
             playGame, GAME_STATE = endgame(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
             count_frame = 200
         else:
@@ -496,8 +499,10 @@ while (playGame):
                 move = STOP
                 # Если нет попыток, то конец игры, иначе ещё одна попытка
                 pygame.event.clear()
+                pygame.event.get()
                 if (player_try <= 0):
                     level = 1
+                    player_try = 3
                     GAME_STATE = ENDGAME
                 else:
                     GAME_STATE = NEXT_TRY
