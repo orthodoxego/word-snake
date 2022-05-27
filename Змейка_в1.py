@@ -353,8 +353,8 @@ while (playGame):
 
     # ЭКРАННАЯ ЗАСТАВКА ПРИ ПОРАЖЕНИИ
     elif GAME_STATE == NEXT_TRY:
+        pygame.event.get()
         if (count_frame > 180):
-            pygame.event.get()
             playGame, GAME_STATE = next_try(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
             count_frame = 200
         else:
@@ -366,8 +366,8 @@ while (playGame):
             pygame.display.flip()
 
     elif GAME_STATE == ENDGAME:
+        pygame.event.get()
         if (count_frame > 180):
-            pygame.event.get()
             playGame, GAME_STATE = endgame(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
             count_frame = 200
         else:
