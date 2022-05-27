@@ -7,6 +7,7 @@ from honey_badger.honey_badger import *
 from services.menu import *
 from services.screen_saver import *
 from services.next_try import *
+from services.end_game import *
 
 # Выводит кирпичную стену
 def draw_brick():
@@ -257,6 +258,7 @@ while (playGame):
     if GAME_STATE == MENU:
         playGame, select_menu, GAMEMODE = menu(pygame, scene, word_font, medium_font, clock, FPS)
         if (select_menu > 0):
+            pygame.event.clear()
             GAME_STATE = RESTART
 
     elif GAME_STATE == RESTART:
@@ -329,8 +331,7 @@ while (playGame):
             level_candy = getCountCandys(game_map)
             snake = [[28, 4],
                      [28, 3]]
-
-        print(f"Количество кэнди на уровне {level} = {level_candy}")
+        pygame.event.clear()
         GAME_STATE = SCREEN_SAVER
 
     # ЭКРАННАЯ ЗАСТАВКА ПЕРЕД УРОВНЕМ
@@ -341,6 +342,18 @@ while (playGame):
     elif GAME_STATE == NEXT_TRY:
         if (count_frame > 180):
             playGame, GAME_STATE = next_try(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
+            count_frame = 200
+        else:
+            scene.fill(BLACK)
+            draw_snake(scene, move, snake)
+            draw_brick()
+            draw_vacuum_cleaner()
+            draw_text(scene)
+            pygame.display.flip()
+
+    elif GAME_STATE == ENDGAME:
+        if (count_frame > 180):
+            playGame, GAME_STATE = endgame(pygame, scene, GAMEMODE, word_font, level, word, clock, FPS)
             count_frame = 200
         else:
             scene.fill(BLACK)
@@ -469,7 +482,13 @@ while (playGame):
                 count_frame = 0
                 player_try -= 1
                 move = STOP
-                GAME_STATE = NEXT_TRY
+                # Если нет попыток, то конец игры, иначе ещё одна попытка
+                pygame.event.clear()
+                if (player_try <= 0):
+                    level = 1
+                    GAME_STATE = ENDGAME
+                else:
+                    GAME_STATE = NEXT_TRY
             # ---------------------------------------------------------------
 
 
