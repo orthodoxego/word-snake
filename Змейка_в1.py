@@ -15,7 +15,9 @@ def draw_brick():
         for j in range(len(game_map[i])):
             SQUARE = game_map[i][j]
             if SQUARE == BRICK:
+                snd[0].play()
                 scene.blit(brick, (j * 32, i * 32))
+
 
 # Выводит пылесосы
 def draw_vacuum_cleaner():
@@ -34,6 +36,7 @@ def draw_snake(scene, move, snake):
     # Выводим голову
     if move == STOP:
         scene.blit(snake00, (snake[0][0] * 32, snake[0][1] * 32))
+
     elif move == UP:
         snake, move = move_snake(snake, move)
         scene.blit(snake01, (snake[0][0] * 32, snake[0][1] * 32))
@@ -137,6 +140,7 @@ def check_candy(snake, game_map):
     """ Возвращает True когда змейка ест конфету. """
     if game_map[snake[0][1]][snake[0][0]] == 2:
         game_map[snake[0][1]][snake[0][0]] = 0
+        snd[2].play()
         return True    
     return False
 
@@ -144,6 +148,7 @@ def check_bush_c(snake, game_map):
     """ Возвращает True когда змейка ест конфету с кустами. """
     if game_map[snake[0][1]][snake[0][0]] == 8:
         game_map[snake[0][1]][snake[0][0]] = 3
+        snd[2].play()
         return True
     return False
 
@@ -155,7 +160,7 @@ def check_portal(snake, game_map):
     return False
 
 def move_snake(snake, move):
-    """ Обработает движение змейки. """        
+    """ Обработает движение змейки. """
     if count_frame % speed_snake != 0:
         return snake, move
     
@@ -172,7 +177,8 @@ def move_snake(snake, move):
         nx += 1
         
     if game_map[ny][nx] == 1:
-        move = STOP    
+        move = STOP
+        # snd[0].play()
         return snake, move
 
     for i in range(1, len(snake)):
@@ -223,6 +229,7 @@ def is_letter(word, x, y):
     
     if n == num_letter or letter == word[num_letter][0]:
         word[n][3] = True
+        snd[2].play()
         return True
     elif letter != "":
         num_letter = 1
@@ -344,6 +351,16 @@ while (playGame):
             level_candy = getCountCandys(game_map)
             snake = [[28, 4],
                      [28, 3]]
+
+            if level == 8:
+                game_map = Level08()
+                word = Word08()
+                # + медоеды
+                badger_position = getBagerPositions()
+                level_bush_c = 2
+                level_candy = getCountCandys(game_map)
+                snake = [[28, 4],
+                         [28, 3]]
         pygame.event.clear()
         pygame.event.get()
         GAME_STATE = SCREEN_SAVER
@@ -474,6 +491,7 @@ while (playGame):
         if level_candy == count_candy and word_complete:
             if check_portal(snake, game_map):
                 level += 1
+                snd[3].play()
                 GAME_STATE = RESTART
 
 
