@@ -357,8 +357,8 @@ while (playGame):
                 badger_position = getBagerPositions()
                 level_bush_c = 2
                 level_candy = getCountCandys(game_map)
-                snake = [[28, 4],
-                         [28, 3]]
+                snake = [[7, 11],
+                         [7, 10]]
         pygame.event.clear()
         pygame.event.get()
         GAME_STATE = SCREEN_SAVER
