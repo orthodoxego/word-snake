@@ -15,7 +15,7 @@ def draw_brick():
         for j in range(len(game_map[i])):
             SQUARE = game_map[i][j]
             if SQUARE == BRICK:
-                snd[0].play()
+                # snd[0].play()
                 scene.blit(brick, (j * 32, i * 32))
 
 # Выводит пылесосы
