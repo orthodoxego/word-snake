@@ -18,7 +18,6 @@ def draw_brick():
                 snd[0].play()
                 scene.blit(brick, (j * 32, i * 32))
 
-
 # Выводит пылесосы
 def draw_vacuum_cleaner():
     for i in range(len(badger_position)):
@@ -32,11 +31,11 @@ def draw_vacuum_cleaner():
             scene.blit(honey_badger4, (badger_position[i][1] * 32, badger_position[i][0] * 32))
 
 # Выводит змейку на экран
-def draw_snake(scene, move, snake):
+def draw_snake(scene, snake):
     # Выводим голову
+    global move
     if move == STOP:
         scene.blit(snake00, (snake[0][0] * 32, snake[0][1] * 32))
-
     elif move == UP:
         snake, move = move_snake(snake, move)
         scene.blit(snake01, (snake[0][0] * 32, snake[0][1] * 32))
@@ -166,7 +165,8 @@ def move_snake(snake, move):
     
     nx = snake[0][0]
     ny = snake[0][1]
-    
+
+
     if move == UP:
         ny -= 1         
     elif move == DOWN:
@@ -177,14 +177,12 @@ def move_snake(snake, move):
         nx += 1
         
     if game_map[ny][nx] == 1:
-        move = STOP
-        # snd[0].play()
-        return snake, move
+        snd[0].play()
+        return snake, STOP
 
     for i in range(1, len(snake)):
         if snake[i][0] == nx and snake[i][1] == ny:
-            move = STOP
-            return snake, move
+            return snake, STOP
             
     for i in range(len(snake) - 1, 0, -1):
         snake[i][0] = snake[i - 1][0]
@@ -377,7 +375,7 @@ while (playGame):
             count_frame = 200
         else:
             scene.fill(BLACK)
-            draw_snake(scene, move, snake)
+            draw_snake(scene, snake)
             draw_brick()
             draw_vacuum_cleaner()
             draw_text(scene)
@@ -390,7 +388,7 @@ while (playGame):
             count_frame = 200
         else:
             scene.fill(BLACK)
-            draw_snake(scene, move, snake)
+            draw_snake(scene, snake)
             draw_brick()
             draw_vacuum_cleaner()
             draw_text(scene)
@@ -449,7 +447,7 @@ while (playGame):
 
 
         # Рисование змеи
-        draw_snake(scene, move, snake)
+        draw_snake(scene, snake)
 
         # Выводим траву     
         for i in range(len(game_map)):
@@ -469,8 +467,7 @@ while (playGame):
 
         # Выводим сообщения поверх всего остального
         draw_text(scene)
-        
-            
+
         # Отрисовываем изображения
         pygame.display.flip()
 
