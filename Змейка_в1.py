@@ -372,7 +372,7 @@ while (playGame):
 
     # ЭКРАННАЯ ЗАСТАВКА КОНЦА ИГРЫ, КОГДА ПРОЙДЁНЫ ВСЕ УРОВНИ
     elif GAME_STATE == WINGAME:
-        playGame, GAME_STATE = win_game(pygame, scene, GAMEMODE, word_font, clock, FPS)
+        playGame, GAME_STATE = win_game(pygame, scene, word_font, clock, FPS)
 
     # ЭКРАННАЯ ЗАСТАВКА ПЕРЕД УРОВНЕМ
     elif GAME_STATE == SCREEN_SAVER:

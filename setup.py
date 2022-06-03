@@ -1,7 +1,7 @@
 from random import randint
 import pygame
 pygame.init()
-level = 9
+level = 8
 
 # Сколько попыток на прохождение игры
 player_try = 3
@@ -86,7 +86,8 @@ screen_img = [pygame.image.load("png/animals/cat.png"),
               pygame.image.load("png/animals/fox.png"),
               pygame.image.load("png/animals/wolf.png"),
               pygame.image.load("png/animals/snake_cry.png"),
-              pygame.image.load("png/endgame.png")]
+              pygame.image.load("png/endgame.png"),
+              pygame.image.load("png/win_game.png")]
 
 snd = [pygame.mixer.Sound("music/bym.mp3"),
        pygame.mixer.Sound("music/muzyka-iz-filma-uzhasov-1.mp3"),

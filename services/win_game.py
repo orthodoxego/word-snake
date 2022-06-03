@@ -1,23 +1,28 @@
 import pygame
 from setup import *
 
-def win_game(pg: pygame, scene, GAMEMODE, word_font, clock, FPS):
+def win_game(pg: pygame, scene, word_font, clock, FPS):
     # Выводит на экран заставку перед уровнем
     mouse_y = pygame.mouse.get_pos()[1]
 
     # Очищаем сцену
     scene.fill((0, 0, 0))
 
-    scene.blit(screen_img[level - 1], ((WIDTH - 640) // 2, 80))
+    scene.blit(screen_img[10], ((WIDTH - 640) // 2, 60))
 
-    msg = f"Уровень: {level}"
-    if (level == 1):
-        msg = f"Привет, путешественник! Тебя ждёт уровень 1!"
+    msg = f"ПОЛНАЯ И БЕЗОГОВОРОЧНАЯ ПОБЕДА!"
+
     txt = word_font.render(msg, True, (255, 255, 128))
     scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 20))
 
+    msg = f"Надеюсь, что вы выучили новые слова!"
+    txt = word_font.render(msg, True, (255, 255, 255))
+    scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 550))
+
+    msg = f"С уважением, юная разработчица, Женя Рябухо!"
     txt = word_font.render(msg, True, (255, 255, 255))
     scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 580))
+
 
 
     # Отрисовываем изображения
