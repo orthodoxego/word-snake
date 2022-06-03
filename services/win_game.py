@@ -19,7 +19,7 @@ def win_game(pg: pygame, scene, word_font, clock, FPS):
     txt = word_font.render(msg, True, (255, 255, 255))
     scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 550))
 
-    msg = f"С уважением, юная разработчица, Женя Рябухо!"
+    msg = f"С уважением, юная разработчица Женя Рябухо!"
     txt = word_font.render(msg, True, (255, 255, 255))
     scene.blit(txt, ((WIDTH - word_font.size(msg)[0]) // 2, 580))
 
