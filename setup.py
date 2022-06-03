@@ -1,7 +1,7 @@
 from random import randint
 import pygame
 pygame.init()
-level = 6
+level = 9
 
 # Сколько попыток на прохождение игры
 player_try = 3
@@ -39,6 +39,7 @@ PLAY = 3
 GAME_OVER = 4
 NEXT_TRY = 5
 ENDGAME = 6
+WINGAME = 7
 GAME_STATE = MENU
 
 UP = 1

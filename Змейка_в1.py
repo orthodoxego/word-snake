@@ -8,6 +8,7 @@ from services.menu import *
 from services.screen_saver import *
 from services.next_try import *
 from services.end_game import *
+from services.win_game import *
 
 # Выводит кирпичную стену
 def draw_brick():
@@ -272,6 +273,7 @@ while (playGame):
         count_candy = 0             # Количество леденцов на карте
         word_complete = False       # Собрано ли слово полностью?
         badger_position = []
+        move = STOP
         
         if level == 1:                       
             game_map = Level01()
@@ -289,7 +291,7 @@ while (playGame):
                      [21, 4],
                      [22, 4]]
 
-        if level == 2:            
+        elif level == 2:
             game_map = Level02()
             word = Word02()
             # + медоеды
@@ -299,7 +301,7 @@ while (playGame):
                      [17, 4],
                      [18, 4]]
             
-        if level == 3:
+        elif level == 3:
             game_map = Level03()
             word = Word03()
             # + медоеды
@@ -310,7 +312,7 @@ while (playGame):
                      [14, 4],
                      [15, 4]]
 
-        if level == 4:
+        elif level == 4:
             game_map = Level04()
             word = Word04()
             # + медоеды
@@ -320,7 +322,7 @@ while (playGame):
             snake = [[1, 17],
                      [1, 18]]
 
-        if level == 5:
+        elif level == 5:
             game_map = Level05()
             word = Word05()
             # + медоеды
@@ -329,7 +331,7 @@ while (playGame):
             snake = [[8, 15],
                      [8, 16]]
 
-        if level == 6:
+        elif level == 6:
             game_map = Level06()
             # + медоеды
             badger_position = getBagerPositions()
@@ -340,7 +342,7 @@ while (playGame):
             snake = [[32, 10],
                      [33, 10]]
 
-        if level == 7:
+        elif level == 7:
             game_map = Level07()
             word = Word07()
             # + медоеды
@@ -350,18 +352,27 @@ while (playGame):
             snake = [[28, 4],
                      [28, 3]]
 
-            if level == 8:
-                game_map = Level08()
-                word = Word08()
-                # + медоеды
-                badger_position = getBagerPositions()
-                level_bush_c = 2
-                level_candy = getCountCandys(game_map)
-                snake = [[7, 11],
-                         [7, 10]]
-        pygame.event.clear()
-        pygame.event.get()
-        GAME_STATE = SCREEN_SAVER
+        elif level == 8:
+            game_map = Level08()
+            word = Word08()
+            # + медоеды
+            badger_position = getBagerPositions()
+            level_bush_c = 2
+            level_candy = getCountCandys(game_map)
+            snake = [[7, 11],
+                     [7, 10]]
+
+        elif level == 9:
+            GAME_STATE = WINGAME
+
+        if (GAME_STATE != WINGAME):
+            pygame.event.clear()
+            pygame.event.get()
+            GAME_STATE = SCREEN_SAVER
+
+    # ЭКРАННАЯ ЗАСТАВКА КОНЦА ИГРЫ, КОГДА ПРОЙДЁНЫ ВСЕ УРОВНИ
+    elif GAME_STATE == WINGAME:
+        playGame, GAME_STATE = win_game(pygame, scene, GAMEMODE, word_font, clock, FPS)
 
     # ЭКРАННАЯ ЗАСТАВКА ПЕРЕД УРОВНЕМ
     elif GAME_STATE == SCREEN_SAVER:
