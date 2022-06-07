@@ -1,7 +1,7 @@
 from random import randint
 import pygame
 pygame.init()
-level = 1
+level = 5
 
 # Сколько попыток на прохождение игры
 player_try = 3
